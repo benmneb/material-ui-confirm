@@ -133,3 +133,39 @@ const App = () => {
   );
 };
 ```
+
+### Disable Backdrop Click
+
+Ensure the user does not unintentionally dismiss the confirmation by accidentally clicking outside the confirm dialog. This could stop them from potentially cancelling a form submit and losing all entered data, for example. This is done with the `dialog props` object.
+
+##### Locally
+
+```jsx
+const MyComponent = () => {
+  // ...
+
+  const handleClick = () => {
+    confirm({ dialogProps: { disableBackdropClick: true	} })
+      .then(() => { /* ... */ })
+      .catch(() => { /* ... */ });
+  };
+
+  // ...
+};
+```
+
+##### Globally
+
+```jsx
+const App = () => {
+  return (
+    <ConfirmProvider
+      defaultOptions={{
+        dialogProps: { disableBackdropClick: true }
+      }}
+    >
+      {/* ... */}
+    </ConfirmProvider>
+  );
+};
+```
